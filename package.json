@@ -1,0 +1,17 @@
+{
+  "name": "team-manager",
+  "version": "1.0.0",
+  "description": "Live Tracking of Remote Projects and Workers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dmitri Wolf",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "node-notifier": "^4.6.1",
+    "socket.io": "^1.7.2"
+  }
+}
