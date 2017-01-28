@@ -29,6 +29,6 @@ app.get('/', function (req, res) {
 	res.render('home');	
 });
 
-http.listen(3002, function(){
+http.listen(process.env.PORT || 3002, function(){
   console.log('listening on *:3002');
 });
