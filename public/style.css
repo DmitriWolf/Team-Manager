@@ -4,10 +4,11 @@ body {
 }
 
 #app {
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;	font-size: 14px;
-	width: 480px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	width: 100%;
 	margin: 0 auto;	
 	position: relative;
+	font-size: 28px;
 }
 
 header {    
@@ -21,7 +22,7 @@ header {
   padding: 12px 0;
   margin: 0 auto;
   display: block;
-  font-size: 18px;
+  font-size: 1em;
   font-weight: bold;
 }
 
@@ -68,7 +69,7 @@ form button {
 	padding: 10px; 
 }
 input#m {
-	font-size: 14px;
+	font-size: 1em;
 }
 
 input#imagefile {
@@ -79,7 +80,7 @@ input#imagefile {
 }
 
 button.send {
-	font-size: 14px;
+	font-size: 1em;
 }
 
 .filebutton {
