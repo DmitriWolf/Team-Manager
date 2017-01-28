@@ -96,7 +96,7 @@ button.send {
 	z-index: 3;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 920px) {
   #app {
     width: 100%;
   }
