@@ -1,0 +1,126 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+#app {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	width: 100%;
+	margin: 0 auto;	
+	position: relative;
+	font-size: 28px;
+}
+
+header {    
+	z-index: 6;
+  position: fixed;
+  top: 0;
+  background: #fff;
+  border-bottom: 2px solid #000;
+  width: inherit;
+  text-align: center;
+  padding: 12px 0;
+  margin: 0 auto;
+  display: block;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+#messages { 
+  position: realtive;
+  min-height: 100%;
+  width: 100%;
+	margin: 0; 
+	margin-top: 60px;
+	padding: 0;  
+	margin-bottom: 160px;
+	list-style-type: none; 
+}
+
+/*
+@todo: bottom scrolling chat messages:
+
+#chatbox {
+  overflow:   none;
+  position:   relative;
+  width:      100%;
+  height:     400px;
+}
+
+#chatmessages {
+  overflow:   auto;
+  position:   absolute;
+  bottom:     0;
+  max-height: 400px;
+}
+
+MessagesList:
+<div id="chatbox"><div id="chatmessages"><ul id="messages"></ul></div></div>;
+*/
+
+#messages img {
+	width: 100%;
+}
+
+#messages li { 
+	padding: 5px 10px; 
+}
+#messages li:nth-child(odd) { 
+	background: #eee; 
+}
+
+form#send-message {
+	position: fixed; 
+	bottom: 0; 
+  width: 100%;
+	background: #fff; 
+	padding: 3px 0; 
+	overflow: hidden;
+	border-top: 2px solid #000;
+}
+form input { 
+	border: 0; 
+	padding: 10px; 
+	width: 100%; 
+}
+form button { 
+	width: 100%; 
+	background: rgb(130, 224, 255); 
+	border: none; 
+	padding: 10px; 
+}
+input#m {
+	font-size: 1em;
+}
+
+input#imagefile {
+	position: relative;
+	z-index: 4;
+	cursor: pointer;
+	padding-left: 100%;
+}
+
+button.send {
+	font-size: 1em;
+}
+
+.filebutton {
+	overflow: hidden;
+}
+
+.filebutton .label {
+	position: absolute;
+	width: 100%;    
+	bottom: 0;
+  height: 20px;
+  padding-bottom: 10px;
+	text-align: center;	
+	z-index: 3;
+}
+
+@media (max-width: 920px) {
+  #app {
+    width: 100%;
+  }
+}
+

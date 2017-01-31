@@ -1,4 +1,5 @@
 node_modules
 npm-debug.log
 private.txt
-dist/
+dist/*
+!dist/style.css
