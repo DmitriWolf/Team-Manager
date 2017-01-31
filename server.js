@@ -4,7 +4,6 @@ var io = require('socket.io')(http);
 var express = require('express');
 var exphbs  = require('express-handlebars');
 var path = require('path');
-var notify = require('./notify');
 
 io.on('connection', function(socket){
 
