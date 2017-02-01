@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Live Tracking of Remote Projects and Workers",
   "scripts": {
-    "start": "npm run serve | npm run dev",
+    "postinstall": "webpack",
+    "webpack": "webpack",
+    "start": "npm run serve | npm run dev", // --ignore client/
     "serve": "./node_modules/.bin/http-server -p 8080",
     "dev": "webpack-dev-server --progress --colors --port 3002"
   },
