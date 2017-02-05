@@ -7,6 +7,7 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var router = express.Router(); 
 var ChatMessage     = require('./src/models/chatMessage');
+var Entry     = require('./src/models/entry');
 
 io.on('connection', function(socket){
 
@@ -35,15 +36,11 @@ app.get('/', function (req, res) {
 });
 
 router.route('/chatmessage')
-  .post(function(req, res) {
-    console.log('chatMessage received!', req.body);
-    
+  .post(function(req, res) {    
     var chatMessage = new ChatMessage();      
     chatMessage.name = req.body.name;  
 
-    // save the chatMessage and check for errors
     chatMessage.save(function(err) {
-    	console.log('saving');
       if (err) {
         console.log('err: ', err);
         res.send(err);
@@ -61,6 +58,36 @@ router.route('/chatmessage')
   });
 });
 
+
+router.route('/entry')
+  .post(function(req, res) {
+    var entry = new Entry();      
+    entry.title = req.body.title;  
+    entry.author = req.body.author;  
+    entry.jobId = req.body.name;  
+    entry.body = req.body.body;  
+    entry.photo = req.body.photo;  
+    entry.tags = req.body.tags;  
+
+    entry.save(function(err) {
+    	console.log('saving');
+      if (err) {
+        console.log('err: ', err);
+        res.send(err);
+      } 
+      res.json({ message: 'Entry created!' });
+    });
+  });
+
+router.route('/entry')
+ .get( (req, res) => {
+  Entry.find(function (err, messages) {
+    if (err) return console.error(err);
+    console.log(messages);
+    res.send(messages);
+  });
+});
+
 http.listen(process.env.PORT || 3002, function(){
   console.log('listening on *:3002');
 });
@@ -69,5 +96,19 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/test');
 
 
+// @todo: use the following to make a test
 
+//   var entry = new EntrySchema();
+//   entry.title     = "Plumbing issue";
+//   entry.author    = "Dmitri";
+//   entry.jobId     = "50168";
+//   entry.body      = "Plumbing valve now leaking. Water off to house. Request a plumber asap.";
+//   entry.photo     = "https://cdn2.tmbi.com/TFH/Projects/FH10NOV_SHUTOF_01.jpg";
+//   entry.tags      = [ "plumbing", "leak", "urgent", "problem" ];
 
+//     entry.save(function(err) {
+//       if (err) {
+//         // err
+//       } 
+//       // entry created
+//     });
