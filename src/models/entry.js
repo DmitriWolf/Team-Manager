@@ -3,7 +3,7 @@ var Schema       = mongoose.Schema;
 
 console.log('executing Entry.js file');
 
-var Entry = new Schema({
+var EntrySchema = new Schema({
 	title : String,
 	author: String,
 	jobId : String,
@@ -13,4 +13,4 @@ var Entry = new Schema({
 	tags  : [ String ]
 });
 
-module.exports = mongoose.model('Entry', Entry);
+module.exports = mongoose.model('entry', EntrySchema);
