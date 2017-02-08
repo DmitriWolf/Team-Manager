@@ -36,5 +36,25 @@ ManagerActions.addPost({
 	date       : Date.now ,
 	tags       : [ "kitchen", "order", "shipping", "problem" ]
 });
+ManagerActions.addPost({
+	id         : "928374kl23lkjlj3kljk324",
+	title      : "Job Finish",
+	author     : "Joaquin Phoenix",
+	jobId      : "4",
+	description: "Clinet is very happy. I am too. long drive home.",
+	photo      : 'url here',
+	date       : Date.now ,
+	tags       : [ "kitchen", "complete", "final", "out of here" ]
+});
+ManagerActions.addPost({
+	id         : "928374kl232342kj34kj3kljk324",
+	title      : "Setup",
+	author     : "Dmtir Wolf",
+	jobId      : "5",
+	description: "Lots of plastic to cover up bed. House is dirty. Not very happy.",
+	photo      : 'url here',
+	date       : Date.now ,
+	tags       : [ "bathroom", "dirt", "gross", "pay me more"]
+});
 
 ReactDOM.render(<AppContainer />, document.getElementById('root'));

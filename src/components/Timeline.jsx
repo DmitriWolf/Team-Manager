@@ -9,15 +9,18 @@ class Timeline extends Component {
     return (
     	<div className="main">
     		<h2>Timeline</h2>
-    		<ul id="timeline"> 
-                {posts.map(post => (
-                  <Entry
-                    key={post.id}
-                    post={post}
-                  />
-                ))}
-    		  <li className="add-new-form"><EntryForm /></li>
-    		</ul>
+        <table cellspacing="30">
+          <tbody>
+        		<tr id="timeline"> 
+                    {posts.map(post => (
+                      <Entry
+                        key={post.id}
+                        post={post}
+                      />
+                    ))}
+        		</tr>
+          </tbody>
+        </table>
     	</div>
     )
   }
