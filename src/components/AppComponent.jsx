@@ -11,6 +11,10 @@ class AppComponent extends Component {
 	  this.socket.on('entry message', entry => { ManagerActions.addPost( entry ); });
 	}
 
+	addPost(post){
+		this.socket.emit('entry message', post);
+	}
+
 	render() {
 	  var posts = this.props.posts.toArray();
 
@@ -18,7 +22,7 @@ class AppComponent extends Component {
     	<div className="main">	  
     		<Header />
 			  <Timeline  {...this.props} />
-			  <Footer />
+			  <Footer addPost={this.addPost.bind(this)} />
     	</div>
     )
   }

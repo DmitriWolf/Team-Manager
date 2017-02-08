@@ -5,7 +5,7 @@ class Footer extends Component {
   render() {
     return (
     	<div className="footer">	
-    		<EntryForm />
+    		<EntryForm addPost={this.props.addPost} />
     	</div>
     )
   }
