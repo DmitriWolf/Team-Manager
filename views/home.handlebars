@@ -4,31 +4,4 @@
 
 <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script>
-  var socket = io();
-  console.log('socket: ', socket);
-
-  $('form').submit(function(){
-    socket.emit('chat message', $('#m').val());
-    $('#m').val('');
-    return false;
-  });
-
-  $('#imagefile').bind('change', function(e){
-    var data = e.originalEvent.target.files[0];
-    var reader = new FileReader();
-    reader.onload = function(evt){
-      socket.emit('image message', evt.target.result);
-    };
-    reader.readAsDataURL(data);
-  });
-
-  socket.on('chat message', function(msg){
-    $('#messages').append($('<li>').text(msg));
-  });
-
-  socket.on('image message', function (base64Image) {
-    $('#messages').append($('<p>').append($('<img class="chat-image" src="' + base64Image + '"/>')));
-  });
-
-</script>
+<script src="frontend.js"></script>

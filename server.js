@@ -6,7 +6,6 @@ var exphbs  = require('express-handlebars');
 var path = require('path');
 var bodyParser = require('body-parser');
 var router = express.Router(); 
-var ChatMessage     = require('./src/models/chatMessage');
 var entry = require('./routes/entry.js');
 
 io.on('connection', function(socket){
@@ -14,8 +13,9 @@ io.on('connection', function(socket){
     io.emit('image message', msg);
   });
 
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
+  socket.on('entry message', function(entry){
+    console.log('entry message: ', entry);
+    io.emit('entry message', entry);
   });
 });
 
