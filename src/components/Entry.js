@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 
 class Entry extends Component {
   render() {
-
-    console.log('Entry props: ', this.props);
-
     return (
     	<div className="entry">
         <div className="title">id: {this.props.post.id}</div>
