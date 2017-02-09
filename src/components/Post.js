@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import Counter from '../data/Counter';
 
-class Entry extends Component {
+class Post extends Component {
   render() {
     return (
     	<td>
-        <div className="entry">
-          <div className="title">id: {this.props.post.id}</div>
+        <div className="post">
+          <div className="id">id: {this.props.post.id}</div>
   	    	<div className="title">Title: {this.props.post.title}</div>
   	    	<div className="description">description: {this.props.post.description}</div>
   	    	<div className="job">job: {this.props.post.job}</div>
@@ -21,4 +21,4 @@ class Entry extends Component {
   }
 }
 
-export default Entry; 
+export default Post; 

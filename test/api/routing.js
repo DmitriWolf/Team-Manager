@@ -2,22 +2,22 @@ let chai = require('chai');
 let chaiHttp = require('chai-http');
 let server = require('../../server');
 let should = chai.should();
-var Entry = require('../../src/models/Entry');
+var Post = require('../../src/models/Post');
 var mongoose = require('mongoose');
 
 chai.use(chaiHttp);
 
 // empty the test database
 // @todo: do this properly
-Entry.remove({}, (err) => { });     
+Post.remove({}, (err) => { });     
 
-describe('Entries', () => {
+describe('Posts', () => {
 	let apiurl = 'http://localhost:3002/api';
 
-  let testEntry = {
-	  title  : "Correct Routing Test Entry",
+  let testPost = {
+	  title  : "Correct Routing Test Post",
 	  author : "Mal Brooks",
-	  jobId  : "321321",
+	  job    : "321321",
 	  body   : "We are testing a successful post.",
 	  photo  : "https://testingPost.jpg",
 	  tags   : [ "testing", "post" ]
@@ -27,21 +27,21 @@ describe('Entries', () => {
   * Test the /POST route
   */
 
-  describe('/POST entry', () => {
+  describe('/POST post', () => {
       it('it should not post without server-side validation');
     });
 
-  describe('/POST entry', () => {
-    it('it should  POST a correct entry', (done) => {
+  describe('/POST post', () => {
+    it('it should  POST a correct post', (done) => {
       chai.request(apiurl)
-        .post('/entry')
-        .send(testEntry)
+        .post('/post')
+        .send(testPost)
         .end((err, res) => {
             res.should.have.status(200);
             res.body.should.be.a('object');
-            res.body.should.have.property('entry');
-            testEntry._id = res.body.entry["_id"];
-            res.body.should.have.property('message').eql('Entry successfully added!');
+            res.body.should.have.property('post');
+            testPost._id = res.body.post["_id"];
+            res.body.should.have.property('message').eql('Post successfully added!');
             message: 
           done();
         });
@@ -52,10 +52,10 @@ describe('Entries', () => {
   * Test the /GET route
   */
   
-  describe('/GET entry', () => {
-      it('it should GET all the entries', (done) => {
+  describe('/GET post', () => {
+      it('it should GET all the posts', (done) => {
         chai.request(apiurl)
-          .get('/entry')
+          .get('/post')
           .end((err, res) => {
               res.should.have.status(200);
               res.body.should.be.a('array');
@@ -64,14 +64,14 @@ describe('Entries', () => {
           });
       });
   });
-  describe('/GET one entry', () => {
-    it('it should GET one (1) single entry', (done) => {
+  describe('/GET one post', () => {
+    it('it should GET one (1) single post', (done) => {
       chai.request(apiurl)
-        .get('/entry/' + testEntry._id)
+        .get('/post/' + testPost._id)
         .end((err, res) => {
             res.should.have.status(200);
             res.body.should.not.be.a('array');
-            res.body.should.have.property('author').eql(testEntry['author']);
+            res.body.should.have.property('author').eql(testPost['author']);
           done();
         });
     });

@@ -6,7 +6,7 @@ var exphbs  = require('express-handlebars');
 var path = require('path');
 var bodyParser = require('body-parser');
 var router = express.Router(); 
-var entry = require('./routes/entry.js');
+var post = require('./routes/post.js');
 
 // socket.io ---------------------------
 io.on('connection', function(socket){
@@ -14,9 +14,9 @@ io.on('connection', function(socket){
     io.emit('image message', msg);
   });
 
-  socket.on('entry message', function(entry){
-    console.log('entry message: ', entry);
-    io.emit('entry message', entry);
+  socket.on('post message', function(post){
+    console.log('post message: ', post);
+    io.emit('post message', post);
   });
 });
 
@@ -39,13 +39,13 @@ app.use(express.static(path.join(__dirname, 'dist')));
 
 // api routing ---------------------------
 app.use('/api', router);
-router.route("/entry")
-    .get(entry.getEntries)
-    .post(entry.postEntry);
-router.route("/entry/:id")
-    .get(entry.getEntry)
-    .delete(entry.deleteEntry)
-    .put(entry.updateEntry);
+router.route("/post")
+    .get(post.getPosts)
+    .post(post.postPost);
+router.route("/post/:id")
+    .get(post.getPost)
+    .delete(post.deletePost)
+    .put(post.updatePost);
 
 // fire up the server ----------------------
 http.listen(process.env.PORT || 3002, function(){

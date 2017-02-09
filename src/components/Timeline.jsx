@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Entry from './Entry';
+import Post from './Post';
 
 class Timeline extends Component {
 render() {
@@ -12,7 +12,7 @@ render() {
           <tbody>
         		<tr id="timeline"> 
               {posts.map(post => (
-                <Entry
+                <Post
                   key={post.id}
                   post={post}
                 />
