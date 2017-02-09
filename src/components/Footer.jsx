@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import EntryForm from './EntryForm';
+import PostForm from './PostForm';
 
 class Footer extends Component {
   render() {
     return (
     	<div className="footer">	
-    		<EntryForm addPost={this.props.addPost} />
+    		<PostForm addPost={this.props.addPost} />
     	</div>
     )
   }

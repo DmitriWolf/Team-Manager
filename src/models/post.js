@@ -1,9 +1,7 @@
 var mongoose     = require('mongoose');
 var Schema       = mongoose.Schema;
 
-console.log('executing Entry.js file');
-
-var EntrySchema = new Schema({
+var PostSchema = new Schema({
 	title      : String,
 	author     : String,
 	jobId      : String,
@@ -13,4 +11,4 @@ var EntrySchema = new Schema({
 	tags       : [ String ]
 });
 
-module.exports = mongoose.model('entry', EntrySchema);
+module.exports = mongoose.model('post', PostSchema);

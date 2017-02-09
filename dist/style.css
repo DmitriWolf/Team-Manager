@@ -41,15 +41,15 @@ header {
   left: 0;
 }
 
-.footer .entry-form {
+.footer .post-form {
 	width: 100%;
 	padding: 12px;
 	border-top: 1px solid #666;
 }
-.entry-form label {
+.post-form label {
 	font-size: 14px;
 }
-.entry-form .form-title {
+.post-form .form-title {
   vertical-align: middle;
   padding: 5px;
 }
@@ -88,16 +88,16 @@ input#submit {
 #timeline li {
 	list-style-type: none; 
 }
-#timeline .entry {
+#timeline .post {
   width: 500px;
   padding: 12px;
   border: 1px solid #666;
   margin: 12px;
 }
-.entry .tags {
+.post .tags {
   margin-top: 4px;
 }
-.entry .tag {
+.post .tag {
   padding: 3px;
   margin: 4px;
   background: #ddd;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class EntryForm extends Component {
+class PostForm extends Component {
 	constructor(props) {
     super(props);
     this.clearForm();
@@ -39,9 +39,9 @@ class EntryForm extends Component {
 
   render() {
     return (
-    	<div className="entry-form">
+    	<div className="post-form">
     		<form onSubmit={this.handleSubmit.bind(this)}>
-    		  <span className="form-title">Entry Form</span>
+    		  <span className="form-title">Post Form</span>
 				  <input 
 				  	id="title" 
 				  	name="title"
@@ -82,4 +82,4 @@ class EntryForm extends Component {
   }
 }
 
-export default EntryForm; 
+export default PostForm; 

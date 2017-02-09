@@ -8,11 +8,11 @@ class AppComponent extends Component {
 
 	componentDidMount() {
 	  this.socket = io('/');
-	  this.socket.on('entry message', entry => { ManagerActions.addPost( entry ); });
+	  this.socket.on('post message', post => { ManagerActions.addPost( post ); });
 	}
 
 	addPost(post){
-		this.socket.emit('entry message', post);
+		this.socket.emit('post message', post);
 	}
 
 	render() {
