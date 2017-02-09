@@ -10,7 +10,7 @@ class EntryForm extends Component {
   clearForm() {
     this.state = {
     	title: '',
-    	job: '',
+    	job: '3',
     	description: '',
     	tags: '',
     	imagefile: undefined
@@ -19,7 +19,6 @@ class EntryForm extends Component {
 
 	handleInputChange(event) {
     const target = event.target;
-		console.log('input event: ', target.value, target.name);
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
 
@@ -30,6 +29,10 @@ class EntryForm extends Component {
 
 	handleSubmit(event) {
     event.preventDefault();
+    if(this.state.tags) {
+    	let tags = this.state.tags.split(',');
+    	this.state.tags = tags;
+    }
     this.props.addPost(this.state);
     this.clearForm();
   }
@@ -37,7 +40,8 @@ class EntryForm extends Component {
   render() {
     return (
     	<div className="entry-form">
-    		<form onSubmit={this.handleSubmit.bind(this)}>Entry Form
+    		<form onSubmit={this.handleSubmit.bind(this)}>
+    		  <span className="form-title">Entry Form</span>
 				  <input 
 				  	id="title" 
 				  	name="title"
@@ -46,16 +50,18 @@ class EntryForm extends Component {
 				  	value={this.state.title}
             onChange={this.handleInputChange} />
 		    	<label htmlFor="job">Job Name</label>
-		    	<select 
-		    		id="job" 
-		    		name="job"
-		    		value={this.state.job}
-            onChange={this.handleInputChange} >
-					  <option value="1">Billings</option>
-					  <option value="3">Souter</option>
-					  <option value="4">Parkinson</option>
-					  <option value="7">Ploetz</option>
-					</select>
+		    	<div className="select">
+			    	<select 
+			    		id="job" 
+			    		name="job"
+			    		value={this.state.job}
+	            onChange={this.handleInputChange} >
+						  <option value="1">Billings</option>
+						  <option value="3">Souter</option>
+						  <option value="4">Parkinson</option>
+						  <option value="7">Ploetz</option>
+						</select>
+					</div>
 				  <textarea 
 				  	id="description" 
 				  	name="description"
@@ -69,15 +75,7 @@ class EntryForm extends Component {
 				  	type="text" 
             onChange={this.handleInputChange} 
 				  	placeholder="Tags" />
-		    	<label htmlFor="imagefile">Add Photo</label>
-		    	<input  
-		    		id="imagefile" 
-		    		type="file" 
-		    		name="imagefile"
-				  	value={this.state.imagefile}
-            onChange={this.handleInputChange}
-		    		accept="image/*"></input>
-				  <input type="submit" value="Submit" />
+				  <input id="submit" type="submit" value="Submit" />
     		</form>
     	</div>
     )

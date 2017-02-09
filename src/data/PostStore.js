@@ -23,6 +23,7 @@ class PostStore extends ReduceStore {
           title      : action.data.title,
           author     : action.data.author,
           description: action.data.description,
+          job        : action.data.job,
           photo      : action.data.photo,
           tags       : action.data.tags
         };

@@ -6,7 +6,7 @@ const Post = Immutable.Record({
   id  			 : '',
 	title      : '',
 	author     : '',
-	jobId      : '',
+	job        : '',
 	description: '',
 	photo      : '',
 	date       :  Date.now,

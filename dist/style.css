@@ -40,6 +40,7 @@ header {
   bottom: 0;
   left: 0;
 }
+
 .footer .entry-form {
 	width: 100%;
 	padding: 12px;
@@ -48,6 +49,42 @@ header {
 .entry-form label {
 	font-size: 14px;
 }
+.entry-form .form-title {
+  vertical-align: middle;
+  padding: 5px;
+}
+select {
+  background: none;
+  border: none;
+}
+.select, input#tags, input#title, textarea#description, input#submit {
+  background: white;
+  border-radius: 0;
+  border: 1px solid #ddd;
+  display: inline-block;
+  margin: 0 5px;
+}
+.select {    
+  line-height: 24px;
+  padding: 0px 6px 8px 6px;
+}
+input#title {
+  padding: 10px;
+}
+textarea#description {
+  padding: 8px 10px 0px 10px;
+  vertical-align: middle;
+  margin: 4px 0 0 0;
+}
+input#tags {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+input#submit {
+  padding: 10px;
+}
+
+
 #timeline li {
 	list-style-type: none; 
 }
@@ -56,6 +93,15 @@ header {
   padding: 12px;
   border: 1px solid #666;
   margin: 12px;
+}
+.entry .tags {
+  margin-top: 4px;
+}
+.entry .tag {
+  padding: 3px;
+  margin: 4px;
+  background: #ddd;
+  border: 1px solid #aaa;
 }
 tr { 
   vertical-align: top;
