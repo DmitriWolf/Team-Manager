@@ -7,6 +7,7 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var router = express.Router(); 
 var post = require('./routes/post.js');
+var Post = require('./src/models/post');
 
 // socket.io ---------------------------
 io.on('connection', function(socket){
@@ -16,7 +17,18 @@ io.on('connection', function(socket){
 
   socket.on('post message', function(post){
     console.log('post message: ', post);
-    io.emit('post message', post);
+    var newPost = new Post(post);
+    //Save it into the DB.
+    newPost.save((err,savedPost) => {
+        if(err) {
+          console.log('err: ', err);
+          io.emit('post message', { title: 'error', descriptioni: err });
+        }
+        else { 
+          console.log('saved: ', savedPost);
+          io.emit('post message', savedPost);
+        }
+    });
   });
 });
 
@@ -54,4 +66,4 @@ http.listen(process.env.PORT || 3002, function(){
 
 // connect to db ---------------------------
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://localhost/dev');

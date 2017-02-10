@@ -9,7 +9,8 @@ class Post extends Component {
           <div className="id">id: {this.props.post.id}</div>
   	    	<div className="title">Title: {this.props.post.title}</div>
   	    	<div className="description">description: {this.props.post.description}</div>
-  	    	<div className="job">job: {this.props.post.job}</div>
+          <div className="job">job: {this.props.post.job}</div>
+  	    	<div className="date">date: {this.props.post.date}</div>
   	    	<div className="tags">
               {this.props.post.tags.map(tag => (
                 <span key={Counter.increment()} className="tag">{tag}</span>

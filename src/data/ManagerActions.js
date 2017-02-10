@@ -5,9 +5,14 @@ const Actions = {
   addPost(data) {
     ManagerDispatcher.dispatch({
       type: ManagerActionTypes.ADD_POST,
-      data,
+      data
     });
   },
+  getAllPosts() {
+    ManagerDispatcher.dispatch({
+      type: ManagerActionTypes.GET_ALL_POSTS
+    });
+  }
 };
 
 export default Actions;
