@@ -2,7 +2,7 @@ var mongoose     = require('mongoose');
 var Schema       = mongoose.Schema;
 
 var PostSchema = new Schema({
-	id				 : String,
+	_id				 : String,
 	title      : String,
 	author     : String,
 	job        : String,
