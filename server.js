@@ -16,7 +16,6 @@ io.on('connection', function(socket){
   });
 
   socket.on('post message', function(post){
-    console.log('post message: ', post);
     var newPost = new Post(post);
     //Save it into the DB.
     newPost.save((err,savedPost) => {
@@ -25,7 +24,6 @@ io.on('connection', function(socket){
           io.emit('post message', { title: 'error', descriptioni: err });
         }
         else { 
-          console.log('saved: ', savedPost);
           io.emit('post message', savedPost);
         }
     });
