@@ -8,9 +8,10 @@ const Actions = {
       data
     });
   },
-  getAllPosts() {
+  updatePosts(data) {
     ManagerDispatcher.dispatch({
-      type: ManagerActionTypes.GET_ALL_POSTS
+      type: ManagerActionTypes.UPDATE_POSTS,
+      data
     });
   }
 };

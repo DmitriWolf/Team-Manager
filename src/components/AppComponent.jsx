@@ -3,21 +3,19 @@ import Header from '../components/Header';
 import Timeline from '../components/Timeline';
 import Footer from '../components/Footer';
 import ManagerActions from '../data/ManagerActions';
+import PostStore from '../data/PostStore.js';
 
 class AppComponent extends Component {
 
 	componentDidMount() {
 	  this.socket = io('/');
 	  this.socket.on('post message', post => { ManagerActions.addPost( post ); });
-		this.getAllPosts();
+
+		PostStore.getPosts();
 	}
 
 	addPost(post){
 		this.socket.emit('post message', post);
-	}
-
-	getAllPosts() {
-		ManagerActions.getAllPosts();
 	}
 
 	render() {
