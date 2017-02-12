@@ -3,7 +3,7 @@ import Post from './Post';
 
 class Timeline extends Component {
 render() {
-  var posts = this.props.posts.toArray();
+  var posts = this.props.posts;
 
     return (
     	<div className="main">

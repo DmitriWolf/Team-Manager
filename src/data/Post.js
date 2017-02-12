@@ -3,7 +3,7 @@
 import Immutable from 'immutable';
 
 const Post = Immutable.Record({
-  id  			 : '',
+  _id  			 : '',
 	title      : '',
 	author     : '',
 	job        : '',

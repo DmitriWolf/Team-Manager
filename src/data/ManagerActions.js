@@ -5,9 +5,15 @@ const Actions = {
   addPost(data) {
     ManagerDispatcher.dispatch({
       type: ManagerActionTypes.ADD_POST,
-      data,
+      data
     });
   },
+  updatePosts(data) {
+    ManagerDispatcher.dispatch({
+      type: ManagerActionTypes.UPDATE_POSTS,
+      data
+    });
+  }
 };
 
 export default Actions;
