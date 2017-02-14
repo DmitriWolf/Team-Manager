@@ -39,6 +39,7 @@ header {
   width: 100%;
   bottom: 0;
   left: 0;
+  background: #fff;
 }
 
 .footer .post-form {
@@ -83,6 +84,10 @@ input#tags {
 input#submit {
   padding: 10px;
 }
+.imgPreview img {
+  max-width: 100px;
+  max-height: 100px;
+}
 
 
 #timeline li {
@@ -93,6 +98,15 @@ input#submit {
   padding: 12px;
   border: 1px solid #666;
   margin: 12px;
+}
+.post .image {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+}
+.post .image img {
+  max-width: 200px;
+  max-height: 200px;
 }
 .post .tags {
   margin-top: 4px;

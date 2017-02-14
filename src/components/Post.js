@@ -6,6 +6,7 @@ class Post extends Component {
     return (
     	<td>
         <div className="post">
+          <div className="image"><img src={this.props.post.imageDataUrl}/></div>
           <div className="id">id: {this.props.post._id}</div>
   	    	<div className="title">Title: {this.props.post.title}</div>
   	    	<div className="description">description: {this.props.post.description}</div>

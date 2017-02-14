@@ -9,8 +9,11 @@ class AppComponent extends Component {
 
 	componentDidMount() {
 	  this.socket = io('/');
-	  this.socket.on('post message', post => { ManagerActions.addPost( post ); });
+	  this.socket.on('post message', post => { 
+	  	ManagerActions.addPost( post );
+	  });
 
+	  // initial load. 
 		PostStore.getPosts();
 	}
 

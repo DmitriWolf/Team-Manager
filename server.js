@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var router = express.Router(); 
 var post = require('./routes/post.js');
 var Post = require('./src/models/post');
+var crypto = require('crypto');
 
 // socket.io ---------------------------
 io.on('connection', function(socket){
@@ -17,11 +18,11 @@ io.on('connection', function(socket){
 
   socket.on('post message', function(post){
     var newPost = new Post(post);
+    newPost["_id"] = crypto.randomBytes(14).toString('hex');
     //Save it into the DB.
     newPost.save((err,savedPost) => {
         if(err) {
-          console.log('err: ', err);
-          io.emit('post message', { title: 'error', descriptioni: err });
+          io.emit('post message', { title: 'error', description: err });
         }
         else { 
           io.emit('post message', savedPost);

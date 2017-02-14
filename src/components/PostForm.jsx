@@ -5,6 +5,10 @@ class PostForm extends Component {
     super(props);
     this.clearForm();
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.state = { 
+        file: '',
+        imageDataUrl: ''
+    };
   }
 
   clearForm() {
@@ -13,21 +17,36 @@ class PostForm extends Component {
     	job: '3',
     	description: '',
     	tags: '',
-    	imagefile: undefined
+        file: '',
+        imageDataUrl: ''
     };
   }
 
-	handleInputChange(event) {
+  handleInputChange(event) {
     const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const type = target.type;
     const name = target.name;
-
-    this.setState({
-      [name]: value
-    });
+    let value = target.value;
+    if(type === 'checkbox') {
+        value = target.checked;
+    } else if (type === 'file') {
+        let reader = new FileReader();
+        let file = event.target.files[0];
+        reader.onloadend = () => {
+          this.setState({
+            file: file,
+            imageDataUrl: reader.result
+          });
+        }
+        reader.readAsDataURL(file)
+    } else {
+        this.setState({
+          [name]: value
+        });
+    }
   }
 
-	handleSubmit(event) {
+  handleSubmit(event) {
     event.preventDefault();
     if(this.state.tags) {
     	let tags = this.state.tags.split(',');
@@ -37,7 +56,7 @@ class PostForm extends Component {
     this.clearForm();
   }
 
-  render() {
+  render() {    
     return (
     	<div className="post-form">
     		<form onSubmit={this.handleSubmit.bind(this)}>
@@ -48,14 +67,14 @@ class PostForm extends Component {
 				  	type="text" 
 				  	placeholder="Title" 
 				  	value={this.state.title}
-            onChange={this.handleInputChange} />
+                    onChange={this.handleInputChange} />
 		    	<label htmlFor="job">Job Name</label>
 		    	<div className="select">
 			    	<select 
 			    		id="job" 
 			    		name="job"
 			    		value={this.state.job}
-	            onChange={this.handleInputChange} >
+	                    onChange={this.handleInputChange} >
 						  <option value="1">Billings</option>
 						  <option value="3">Souter</option>
 						  <option value="4">Parkinson</option>
@@ -66,17 +85,28 @@ class PostForm extends Component {
 				  	id="description" 
 				  	name="description"
 				  	value={this.state.description}
-            onChange={this.handleInputChange} 
+                    onChange={this.handleInputChange} 
 				  	placeholder="Description" />
 				  <input 
 				  	id="tags" 
 				  	name="tags"
 				  	value={this.state.tags}
 				  	type="text" 
-            onChange={this.handleInputChange} 
+                    onChange={this.handleInputChange} 
 				  	placeholder="Tags" />
+
+                  <input className="fileInput" 
+                    type="file" 
+                    name="file"
+                    onChange={(e)=>this.handleInputChange(e)} />
+
+                    <div className="imgPreview">
+                      <img src={this.state.imageDataUrl} />
+                    </div>
+
 				  <input id="submit" type="submit" value="Submit" />
     		</form>
+
     	</div>
     )
   }
