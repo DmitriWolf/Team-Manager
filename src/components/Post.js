@@ -1,22 +1,41 @@
 import React, { Component } from 'react';
 import Counter from '../data/Counter';
+import PostDetail from './PostDetail';
 
 class Post extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { 
+        clicked: false
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+
+   handleClick () {
+    let newState = !this.state.clicked;
+    this.setState({
+      clicked: newState
+    }); 
+  }
+
+
+
   render() {
+
+    let detail = null;
+    if (this.state.clicked) {
+      detail = <PostDetail post={this.props.post} />
+    } else {
+      detail = null;
+    }
+
     return (
     	<td>
-        <div className="post">
+        <div className="post" onClick={this.handleClick}>
           <div className="image"><img src={this.props.post.imageDataUrl}/></div>
-          <div className="id">id: {this.props.post._id}</div>
-  	    	<div className="title">Title: {this.props.post.title}</div>
-  	    	<div className="description">description: {this.props.post.description}</div>
-          <div className="job">job: {this.props.post.job}</div>
-  	    	<div className="date">date: {this.props.post.date}</div>
-  	    	<div className="tags">
-              {this.props.post.tags.map(tag => (
-                <span key={Counter.increment()} className="tag">{tag}</span>
-              ))}
-          </div>
+          {detail}
         </div>
     	</td>
     )

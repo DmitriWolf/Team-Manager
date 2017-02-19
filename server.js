@@ -8,6 +8,8 @@ var bodyParser = require('body-parser');
 var router = express.Router(); 
 var post = require('./routes/post.js');
 var Post = require('./src/models/post');
+var job = require('./routes/job.js');
+var Job = require('./src/models/job');
 var crypto = require('crypto');
 
 // socket.io ---------------------------
@@ -26,6 +28,20 @@ io.on('connection', function(socket){
         }
         else { 
           io.emit('post message', savedPost);
+        }
+    });
+  });
+
+  socket.on('job message', function(job){
+    var newJob = new Job(job);
+    newJob["_id"] = crypto.randomBytes(14).toString('hex');
+    //Save it into the DB.
+    newJob.save((err,savedJob) => {
+        if(err) {
+          io.emit('job message', { title: 'error', description: err });
+        }
+        else { 
+          io.emit('job message', savedJob);
         }
     });
   });
@@ -57,6 +73,13 @@ router.route("/post/:id")
     .get(post.getPost)
     .delete(post.deletePost)
     .put(post.updatePost);
+router.route("/job")
+    .get(job.getJobs)
+    .post(job.postJob);
+router.route("/job/:id")
+    .get(job.getJob)
+    .delete(job.deleteJob)
+    .put(job.updateJob);
 
 // fire up the server ----------------------
 http.listen(process.env.PORT || 3002, function(){

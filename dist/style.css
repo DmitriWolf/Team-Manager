@@ -94,15 +94,13 @@ input#submit {
 	list-style-type: none; 
 }
 #timeline .post {
-  width: 500px;
-  padding: 12px;
-  border: 1px solid #666;
-  margin: 12px;
 }
 .post .image {
   width: 150px;
   height: 150px;
   overflow: hidden;
+  float: left;
+  margin-right: 20px;
 }
 .post .image img {
   max-width: 200px;
@@ -119,4 +117,11 @@ input#submit {
 }
 tr { 
   vertical-align: top;
+}
+.post-detail {
+  font-size: 12px;
+  width: 400px;
+}
+.post-detail .title {
+  font-size: 1.2em;
 }
