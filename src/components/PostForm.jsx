@@ -6,8 +6,8 @@ class PostForm extends Component {
     this.clearForm();
     this.handleInputChange = this.handleInputChange.bind(this);
     this.state = { 
-        file: '',
-        imageDataUrl: ''
+      file: '',
+      imageDataUrl: ''
     };
   }
 
@@ -39,6 +39,12 @@ class PostForm extends Component {
           });
         }
         reader.readAsDataURL(file)
+    } else if (type === 'select-one') {
+      if(value == "NewJob") {
+        this.props.displayJobForm(true);
+      } else {
+        this.props.displayJobForm(false);
+      }
     } else {
         this.setState({
           [name]: value
@@ -56,7 +62,8 @@ class PostForm extends Component {
     this.clearForm();
   }
 
-  render() {    
+  render() { 
+    var jobs = this.props.jobs || [];   
     return (
     	<div className="post-form">
     		<form onSubmit={this.handleSubmit.bind(this)}>
@@ -74,11 +81,15 @@ class PostForm extends Component {
 			    		id="job" 
 			    		name="job"
 			    		value={this.state.job}
-	                    onChange={this.handleInputChange} >
-						  <option value="1">Billings</option>
-						  <option value="3">Souter</option>
-						  <option value="4">Parkinson</option>
-						  <option value="7">Ploetz</option>
+	            onChange={this.handleInputChange} >
+              <option value=""></option>
+              <option value="NewJob">Add New Job</option>
+              {
+                jobs.map(function(job) {
+                  return <option key={job._id}
+                    value={job.title}>{job.title}</option>;
+                })
+              }
 						</select>
 					</div>
 				  <textarea 

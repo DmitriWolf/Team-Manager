@@ -13,6 +13,19 @@ const Actions = {
       type: ManagerActionTypes.UPDATE_POSTS,
       data
     });
+  },
+  addJob(data) {
+    console.log('ManagerActions - addjob for data: ', data);
+    ManagerDispatcher.dispatch({
+      type: ManagerActionTypes.ADD_JOB,
+      data
+    });
+  },
+  updateJobs(data) {
+    ManagerDispatcher.dispatch({
+      type: ManagerActionTypes.UPDATE_JOBS,
+      data
+    });
   }
 };
 
