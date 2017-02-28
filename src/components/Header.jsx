@@ -3,7 +3,14 @@ import React, { Component } from 'react';
 class Header extends Component {
   render() {
     return (
-    	<header>Team Manager</header>
+    	<header>
+    		<h1>Team Manager</h1>
+    		<div className="header-controls">
+		    	<span className="header-label">Sort By: </span>
+		    	<button>Job</button>
+		    	<button>Installer</button>
+		    </div>
+    	</header>
     )
   }
 }
