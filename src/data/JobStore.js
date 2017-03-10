@@ -25,7 +25,6 @@ class JobStore extends ReduceStore {
           console.log('error: ', err);
           return;
         }
-    console.log('JobStore - getJobs - result: ', res.body);
         ManagerActions.updateJobs(res.body);
       });
   } 

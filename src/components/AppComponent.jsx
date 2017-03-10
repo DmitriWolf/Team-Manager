@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../components/Header';
-import Timeline from '../components/Timeline';
+import Jobsview from '../components/Jobsview';
 import Footer from '../components/Footer';
 import ManagerActions from '../data/ManagerActions';
 import PostStore from '../data/PostStore.js';
@@ -30,14 +30,24 @@ class AppComponent extends Component {
 		this.socket.emit('job message', job);
 	}
 
+	sortBy(event) {
+    event.preventDefault()
+    var el = event.target;
+    console.log("appcomponent - sortyby el: ", el)
+    if(el.id && el.id.split('-').length) {
+    	let category = el.id.split('-')[1];
+    	console.log('sortyby category: "', category, '"');
+    }
+  }
+
 	render() {
 	  var posts = this.props.posts;
 	  var jobs = this.props.jobs;
 
     return (
     	<div className="main">	  
-    		<Header />
-			  <Timeline  {...this.props} />
+    		<Header sortBy={this.sortBy.bind(this)} />
+			  <Jobsview  {...this.props} />
 			  <Footer {...this.props}  addPost={this.addPost.bind(this)} addJob={this.addJob.bind(this)} />
     	</div>
     )

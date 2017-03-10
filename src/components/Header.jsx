@@ -7,8 +7,8 @@ class Header extends Component {
     		<h1>Team Manager</h1>
     		<div className="header-controls">
 		    	<span className="header-label">Sort By: </span>
-		    	<button>Job</button>
-		    	<button>Installer</button>
+		    	<button id="sortby-job" onClick={this.props.sortBy.bind(this)}>Job</button>
+		    	<button id="sortby-installer" onClick={this.props.sortBy.bind(this)}>Installer</button>
 		    </div>
     	</header>
     )

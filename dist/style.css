@@ -114,6 +114,9 @@ input#submit {
   max-height: 100px;
 }
 
+.main table {
+  border-bottom: 2px solid #ddd;
+}
 
 #timeline li {
 	list-style-type: none; 
