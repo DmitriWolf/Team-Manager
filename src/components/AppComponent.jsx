@@ -7,6 +7,12 @@ import PostStore from '../data/PostStore.js';
 import JobStore from '../data/JobStore.js';
 
 class AppComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { 
+        sortBy: 'all'
+    };
+  }
 
 	componentDidMount() {
 	  this.socket = io('/');
@@ -33,10 +39,9 @@ class AppComponent extends Component {
 	sortBy(event) {
     event.preventDefault()
     var el = event.target;
-    console.log("appcomponent - sortyby el: ", el)
     if(el.id && el.id.split('-').length) {
     	let category = el.id.split('-')[1];
-    	console.log('sortyby category: "', category, '"');
+    	this.setState({ 'sortBy' : category });
     }
   }
 
@@ -47,7 +52,7 @@ class AppComponent extends Component {
     return (
     	<div className="main">	  
     		<Header sortBy={this.sortBy.bind(this)} />
-			  <Jobsview  {...this.props} />
+			  <Jobsview  {...this.props} sortBy={this.state.sortBy}/>
 			  <Footer {...this.props}  addPost={this.addPost.bind(this)} addJob={this.addJob.bind(this)} />
     	</div>
     )

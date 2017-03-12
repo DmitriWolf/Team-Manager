@@ -4,11 +4,10 @@ import Post from './Post';
 
 class Timeline extends Component {
   
-
   render() {
-    var posts = this.props;
-    var jobId = "";
-    var postsDisplay = Object.keys(this.props).map(function(i) {
+    let posts = this.props.posts;
+    let jobId = "";
+    let postsDisplay = Object.keys(posts).map(function(i) {
       let post = posts[i];
       jobId = post._id;
       return ( 
@@ -23,7 +22,7 @@ class Timeline extends Component {
 
     return (
     	<div className="main">
-        <h3>{jobId}</h3>
+        <h3>{this.props.title}</h3>
         <table cellSpacing="30">
           <tbody>
         		<tr id="timeline"> 
