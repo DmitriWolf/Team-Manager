@@ -5,17 +5,6 @@ import Post from './Post';
 
 class JobsView extends Component {
 
-  constructor(props) {
-    super(props);
-    // this.state = { 
-    //   sortBy : "job"
-    // };
-    this.state = { 
-      posts : this.props.posts
-    };
-    console.log('jobsview - state: ', this.state);
-  }
-
   sort(collection, sortBy) {
     var sortedRecords = {};
 
@@ -40,14 +29,8 @@ class JobsView extends Component {
     });
 
     return (
-    	<div className="main">
-        <table cellSpacing="30">
-          <tbody>
-        		<tr id="jobsView"> 
-        			{timelines}
-        		</tr>
-          </tbody>
-        </table>
+    	<div className="main" id="jobsView"> 
+        {timelines}
     	</div>
     )
   }

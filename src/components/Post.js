@@ -31,12 +31,10 @@ class Post extends Component {
     }
 
     return (
-    	<td>
         <div className="post" onClick={this.handleClick}>
           <div className="image"><img src={this.props.post.imageDataUrl}/></div>
           {detail}
         </div>
-    	</td>
     )
   }
 }

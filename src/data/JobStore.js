@@ -17,7 +17,6 @@ class JobStore extends ReduceStore {
   }
 
   getJobs() {
-    console.log('JobStore - getJobs');
     request
       .get('/api/job')
       .end(function(err, res){

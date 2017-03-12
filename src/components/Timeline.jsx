@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Counter from '../data/Counter';
 import Post from './Post';
 
 class Timeline extends Component {
@@ -11,10 +12,12 @@ class Timeline extends Component {
       let post = posts[i];
       jobId = post._id;
       return ( 
-        <Post
-          key={post.id}
-          post={post}
-        />
+        <td key={Counter.increment()}>
+          <Post
+            key={post.id}
+            post={post}
+          />
+        </td>
       )
     });
 
