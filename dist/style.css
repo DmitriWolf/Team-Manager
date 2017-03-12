@@ -79,6 +79,9 @@ header .header-controls button {
   vertical-align: middle;
   padding: 5px;
 }
+.post-form .imgPreview {
+  display: inline-block;
+}
 select {
   background: none;
   border: none;
