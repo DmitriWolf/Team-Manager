@@ -26,6 +26,31 @@ header {
   font-weight: bold;
 }
 
+header .header-controls {
+
+}
+
+header .header-controls button, header .header-controls .header-label, header h1 {
+  float: left;
+  padding: 8px;
+  display: block;
+  border: none;
+  float: left;
+  font-size: 16px;
+  line-height: 16px;
+  margin: 2px 4px;
+}
+
+header h1, header .header-controls .header-label {
+  background: none;
+  color: #000;
+}
+
+header .header-controls button {
+  background: #eee;
+  color: #444;
+}
+
 .main { 
   position: realtive;
   min-height: 100%;
@@ -89,6 +114,9 @@ input#submit {
   max-height: 100px;
 }
 
+.main table {
+  border-bottom: 2px solid #ddd;
+}
 
 #timeline li {
 	list-style-type: none; 

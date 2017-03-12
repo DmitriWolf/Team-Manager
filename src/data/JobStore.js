@@ -17,7 +17,6 @@ class JobStore extends ReduceStore {
   }
 
   getJobs() {
-    console.log('JobStore - getJobs');
     request
       .get('/api/job')
       .end(function(err, res){
@@ -25,7 +24,6 @@ class JobStore extends ReduceStore {
           console.log('error: ', err);
           return;
         }
-    console.log('JobStore - getJobs - result: ', res.body);
         ManagerActions.updateJobs(res.body);
       });
   } 

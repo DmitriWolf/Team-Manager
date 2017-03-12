@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Counter from '../data/Counter';
 import PostDetail from './PostDetail';
 
 class Post extends Component {
@@ -7,16 +6,16 @@ class Post extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-        clicked: false
+        showDetails: true
     };
     this.handleClick = this.handleClick.bind(this);
   }
 
 
-   handleClick () {
-    let newState = !this.state.clicked;
+  handleClick () {
+    let newState = !this.state.showDetails;
     this.setState({
-      clicked: newState
+      showDetails: newState
     }); 
   }
 
@@ -25,19 +24,17 @@ class Post extends Component {
   render() {
 
     let detail = null;
-    if (this.state.clicked) {
+    if (this.state.showDetails) {
       detail = <PostDetail post={this.props.post} />
     } else {
       detail = null;
     }
 
     return (
-    	<td>
         <div className="post" onClick={this.handleClick}>
           <div className="image"><img src={this.props.post.imageDataUrl}/></div>
           {detail}
         </div>
-    	</td>
     )
   }
 }

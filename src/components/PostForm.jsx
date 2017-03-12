@@ -14,7 +14,7 @@ class PostForm extends Component {
   clearForm() {
     this.state = {
     	title: '',
-    	job: '3',
+    	job: '',
     	description: '',
     	tags: '',
         file: '',
@@ -39,11 +39,14 @@ class PostForm extends Component {
           });
         }
         reader.readAsDataURL(file)
-    } else if (type === 'select-one') {
+    } else if (type == 'select-one') {
       if(value == "NewJob") {
         this.props.displayJobForm(true);
       } else {
         this.props.displayJobForm(false);
+        this.setState({
+          "job": value
+        });
       }
     } else {
         this.setState({
@@ -87,7 +90,7 @@ class PostForm extends Component {
               {
                 jobs.map(function(job) {
                   return <option key={job._id}
-                    value={job.title}>{job.title}</option>;
+                    value={job["_id"]}>{job.title}</option>;
                 })
               }
 						</select>
