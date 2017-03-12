@@ -11,15 +11,12 @@ class Post extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-
   handleClick () {
     let newState = !this.state.showDetails;
     this.setState({
       showDetails: newState
     }); 
   }
-
-
 
   render() {
 
