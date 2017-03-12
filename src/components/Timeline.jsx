@@ -22,7 +22,7 @@ class Timeline extends Component {
 
     return (
     	<div className="main">
-        <h3>{this.props.jobName}</h3>
+        <h3>{this.props.title}</h3>
         <table cellSpacing="30">
           <tbody>
         		<tr id="timeline"> 

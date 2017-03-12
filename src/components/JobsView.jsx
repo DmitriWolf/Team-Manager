@@ -31,13 +31,12 @@ class JobsView extends Component {
   }
 
   render() {
-    // let sortedPosts = this.sort("job");
     let sortedPosts = this.sort(this.props.sortBy);
     let timelines = Object.keys(sortedPosts).map(function(i) {
       return ( 
       	<Timeline 
       		posts={sortedPosts[i]} 
-          jobName={i}
+          title={i}
           key={Counter.increment()}
         />
       )
